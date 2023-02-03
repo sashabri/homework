@@ -44,6 +44,37 @@ public class Main {
         }
     }
 
+    private static void openZip(String zipInput, String repositoryOutput) {
+        try (ZipInputStream zis = new ZipInputStream(new FileInputStream(zipInput))) {
+            ZipEntry entry;
+            String name;
+
+            while ((entry = zis.getNextEntry()) != null) {
+                name = entry.getName();
+                FileOutputStream fout = new FileOutputStream(repositoryOutput + "\\" + name);
+                for (int c = zis.read(); c != -1; c = zis.read()) {
+                    fout.write(c);
+                }
+                fout.flush();
+                zis.closeEntry();
+                fout.close();
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    private static GameProgress openProgress(String locationSave) {
+        GameProgress gameProgress = null;
+        try (FileInputStream fis = new FileInputStream(locationSave);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            gameProgress = (GameProgress) ois.readObject();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println(gameProgress.toString());
+        return gameProgress;
+    }
+
     public static void main(String[] args) throws IOException {
         GameProgress progress1 = new GameProgress(45, 50, 30, 125.4);
         GameProgress progress2 = new GameProgress(47, 55, 31, 200.7);
@@ -77,5 +108,11 @@ public class Main {
         save1.delete();
         save2.delete();
         save3.delete();
+
+        openZip(locationSaveGamesRepository + "\\zip.zip", locationSaveGamesRepository);
+
+        openProgress(locationSave1);
+        openProgress(locationSave2);
+        openProgress(locationSave3);
     }
 }
