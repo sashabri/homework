@@ -27,4 +27,29 @@ public class GameProgress implements Serializable {
                 ", distance=" + distance +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object ob) {
+        if (ob == this) {
+            return true;
+        }
+
+        if (ob == null || ob.getClass() != getClass()) {
+            return false;
+        }
+
+        GameProgress gameProgress = (GameProgress) ob;
+
+        return health == gameProgress.health &&
+                weapons == gameProgress.weapons &&
+                lvl == gameProgress.lvl &&
+                equalsDouble(distance, gameProgress.distance);
+    }
+
+    public boolean equalsDouble(double d1, double d2) {
+        return Math.abs(d1 - d2) < 0.000000000001;
+    }
+
+
+
 }

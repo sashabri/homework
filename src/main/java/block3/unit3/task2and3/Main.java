@@ -11,7 +11,7 @@ public class Main {
 
     private static final String locationSaveGamesRepository = "E:\\desk top\\homework\\Games\\savegames";
 
-    private static void saveGame(String location, GameProgress gameProgress) {
+    public static void saveGame(String location, GameProgress gameProgress) {
         try (FileOutputStream fos = new FileOutputStream(location);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(gameProgress);
@@ -20,7 +20,7 @@ public class Main {
         }
     }
 
-    private static void zipFiles(String zipLocation, List<String> listLocationObject) {
+    public static void zipFiles(String zipLocation, List<String> listLocationObject) {
         try (ZipOutputStream zout = new ZipOutputStream(new FileOutputStream(zipLocation))) {
 
             int count = 1;
@@ -44,7 +44,7 @@ public class Main {
         }
     }
 
-    private static void openZip(String zipInput, String repositoryOutput) {
+    public static void openZip(String zipInput, String repositoryOutput) {
         try (ZipInputStream zis = new ZipInputStream(new FileInputStream(zipInput))) {
             ZipEntry entry;
             String name;
@@ -63,7 +63,7 @@ public class Main {
         }
     }
 
-    private static GameProgress openProgress(String locationSave) {
+    public static GameProgress openProgress(String locationSave) {
         GameProgress gameProgress = null;
         try (FileInputStream fis = new FileInputStream(locationSave);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
@@ -101,7 +101,7 @@ public class Main {
         List<String> locations = new ArrayList<>();
         locations.add(locationSave1);
         locations.add(locationSave2);
-        locations.add(locationSave2);
+        locations.add(locationSave3);
 
         zipFiles(locationSaveGamesRepository + "\\zip.zip", locations);
 
