@@ -50,5 +50,5 @@ _фрейм метода println_
     - Инициалиируюся необходлимые поля
     - Создаётся объект
 
-![пошаговая работа в картинке здесь](E:\desk top\homework\src\main\java\block3\unit10\task1\n4iOks7esOg.jpg)
+![пошаговая работа в картинке здесь](n4iOks7esOg.jpg)
   
