@@ -1,6 +1,8 @@
 package block4.unit1.task1;
 
 
+import java.util.OptionalInt;
+
 public class Person {
     protected final String name;
     protected final String surname;
@@ -39,8 +41,12 @@ public class Person {
         return surname;
     }
 
-    public int getAge() {
-        return age;
+    public OptionalInt getAge() {
+        if(age < 0) {
+            return OptionalInt.empty();
+        } else {
+            return OptionalInt.of(age);
+        }
     }
 
     public String getAddress() {
