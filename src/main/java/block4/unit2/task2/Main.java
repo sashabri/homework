@@ -20,9 +20,9 @@ public class Main {
             int input3 = sc.nextInt();
 
             if (input3 == 1) {
-                        System.out.println("Ваш результат в двоичной системе исчесления - \n" + bins.mult(inputToStr1, inputToStr2));
-                        break;
-                }
+                System.out.println("Ваш результат в двоичной системе исчесления - \n" + bins.mult(inputToStr1, inputToStr2));
+                break;
+            }
 
             if (input3 == 2) {
                 System.out.println("Ваш результат в двоичной системе исчесления - \n" + bins.sum(inputToStr1, inputToStr2));

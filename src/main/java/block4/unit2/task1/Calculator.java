@@ -5,14 +5,15 @@ public class Calculator {
         return new Formula();
     }
 
-    public static enum Operation {
-        SUM, SUB, MULT, DIV, POW;
+    public enum Operation {
+        SUM, SUB, MULT, DIV, POW
     }
 
     public static class Formula {
         protected Double a, b, result;
 
-        protected Formula() {}
+        protected Formula() {
+        }
 
         public Formula addOperand(double operand) {
             if (a == null) {
