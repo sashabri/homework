@@ -6,7 +6,7 @@ public class Storage {
 
     static final int START_COUNT_PRODUCTS = 5;
 
-    private Map<String, List<Product>> allProducts;
+    private final Map<String, List<Product>> allProducts;
 
     Storage() {
 
@@ -71,7 +71,7 @@ public class Storage {
 
 
     public Product generateProduct(String name, int number, String category) {
-        return new Product(name, number, (int) (50 + Math.random()*101), category);
+        return new Product(name, number, (int) (50 + Math.random() * 101), category);
     }
 
     public Product getProductByNumberAndCategory(int number, String category) {

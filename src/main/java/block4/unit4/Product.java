@@ -1,10 +1,10 @@
 package block4.unit4;
 
 public class Product {
-    private String name;
-    private int number;
-    private int price;
-    private String category;
+    private final String name;
+    private final int number;
+    private final int price;
+    private final String category;
 
     public Product(String name, int number, int price, String category) {
         this.name = name;

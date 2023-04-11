@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class StoreApp {
     private static final Scanner SCANNER = new Scanner(System.in);
-    static final int START_MONEY = 2000; //принцип избегания магических чисел
+    static final int START_MONEY = 2000; //принцип избегания магических чисел, стартовый капитал для инициализации нового юзера.
 
     private final Set<User> usersSet = new HashSet<>();
     private final Storage storage = new Storage();
@@ -32,7 +32,7 @@ public class StoreApp {
         System.out.println("Добро пожаловать в наш магазин - У Глаши");
     }
 
-   // принцип инверсии зависимостей (Dependency Inversion Principle), в методе аторизации используются интерфейсы.
+    // принцип инверсии зависимостей (Dependency Inversion Principle), в методе аторизации используются интерфейсы.
     public User authorization() {
 
         System.out.println(
@@ -106,16 +106,16 @@ public class StoreApp {
             System.out.println(
                     "Упс, кажется вам не хватает средств для оплаты. \n" +
                             "Ведите - 1, если хотете дополнить средства. " +
-                            "Ведите - 2, если хотете убрать товар \n " 
+                            "Ведите - 2, если хотете убрать товар \n "
             );
 
 
             switch (SCANNER.nextInt()) {
-                case 1 :
+                case 1:
                     System.out.println("Введите сумму - ");
                     presentUserImpl.depositMoney(SCANNER.nextInt());
                     break;
-                case 2 :
+                case 2:
                     System.out.println("Для удаления введите номер и категорию товара через пробел, пример - напитки 5");
                     String inputDelete = SCANNER.nextLine();
                     String[] arr = inputDelete.split(" ");

@@ -7,7 +7,7 @@ import block4.unit4.RolesEnum;
 public class UserImpl extends AbstractUser implements User {
 
     private int money;
-    private Basket myBasket = new Basket();
+    private final Basket myBasket = new Basket();
 
     public UserImpl(String name, int money) {
         super(name, RolesEnum.SHOPPER);
@@ -23,7 +23,7 @@ public class UserImpl extends AbstractUser implements User {
     }
 
     public void buyFood() {
-       money -= myBasket.generalPrice();
+        money -= myBasket.generalPrice();
     }
 
     public void depositMoney(int money) {

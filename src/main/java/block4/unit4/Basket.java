@@ -2,7 +2,9 @@ package block4.unit4;
 
 import java.util.ArrayList;
 import java.util.List;
+
 //принцип единственной ответственности (Single Responsibility Principle)
+// корзиа для продуктов выполняет только свои логические функции
 public class Basket {
 
     private List<Product> presentShoppingList = new ArrayList<>();
@@ -28,10 +30,11 @@ public class Basket {
         }
         return result;
     }
+
     public void printPresentShoppingList() {
         if (presentShoppingList != null) {
             for (Product product : presentShoppingList)
-            System.out.println(product.printProduct());
+                System.out.println(product.printProduct());
         }
     }
 }
