@@ -1,6 +1,5 @@
 package block5.unit2.task1;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
@@ -17,7 +16,6 @@ public class Main {
         }
         return route.toString();
     }
-
 
     public static void main(String[] args) {
 
@@ -46,7 +44,6 @@ public class Main {
                     }
             ).start();
         }
-
 
         int maxCountR = 0;
         int numberR = 0;
