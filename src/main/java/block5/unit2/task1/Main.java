@@ -1,9 +1,6 @@
 package block5.unit2.task1;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Main {
 
@@ -18,12 +15,37 @@ public class Main {
         return route.toString();
     }
 
+    public static void main(String[] args) throws InterruptedException {
 
-    public static void main(String[] args) {
+        Thread output = new Thread(
+                () -> {
+                    synchronized (sizeToFreq) {
+                        while (!Thread.interrupted()) {
+                            try {
+                                sizeToFreq.wait();
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                            }
+                            int maxCountR = 0;
+                            int numberR = 0;
+                            for (Integer countR : sizeToFreq.keySet()) {
+                                if (maxCountR < sizeToFreq.get(countR)) {
+                                    maxCountR = sizeToFreq.get(countR);
+                                    numberR = countR;
+                                }
+                            }
+                            System.out.println("текущий лидер среди частот - " + numberR + " (встретилось " + maxCountR + " раз)");
+                        }
+                    }
+                }
+        );
+
+        output.start();
+
+        List<Thread> threads = new ArrayList<>();
 
         for (int i = 0; i < 1000; i++) {
-
-          new Thread(
+            Thread filling = new Thread(
                     () -> {
                         String str = generateRoute("RLRFR", 100);
 
@@ -42,27 +64,18 @@ public class Main {
                             } else {
                                 sizeToFreq.put(count, 1);
                             }
+                            sizeToFreq.notify();
                         }
                     }
-            ).start();
+            );
+            threads.add(filling);
+            filling.start();
         }
 
-
-        int maxCountR = 0;
-        int numberR = 0;
-        for (Integer countR : sizeToFreq.keySet()) {
-            if (maxCountR < sizeToFreq.get(countR)) {
-                maxCountR = sizeToFreq.get(countR);
-                numberR = countR;
-            }
+        for (Thread thread : threads) {
+            thread.join();
         }
 
-        System.out.println("Самое частое количество повторений " + numberR + " (встретилось " + maxCountR + " раз)");
-
-        System.out.println("Другие размеры:");
-
-        for (Integer countR : sizeToFreq.keySet()) {
-            System.out.println("- " + countR + " (" + sizeToFreq.get(countR) + " раз)");
-        }
+        output.interrupt();
     }
 }
