@@ -73,8 +73,8 @@ public class Main {
         riderB.join();
         riderC.join();
 
-        System.out.println("Строка с максимальным количеством символов - A, - " + taskA.get());
-        System.out.println("Максимальное количество символов - B, составляет - " + taskB.get());
-        System.out.println("Максимальное количество символов - C, составляет - " + taskC.get());
+        System.out.println("Строка с максимальным количеством символов - A, " + taskA.get());
+        System.out.println("Строка с максимальным количеством символов - B, " + taskB.get());
+        System.out.println("Строка с максимальным количеством символов - B, " + taskC.get());
     }
 }
