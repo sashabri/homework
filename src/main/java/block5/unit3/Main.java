@@ -75,6 +75,6 @@ public class Main {
 
         System.out.println("Строка с максимальным количеством символов - A, " + taskA.get());
         System.out.println("Строка с максимальным количеством символов - B, " + taskB.get());
-        System.out.println("Строка с максимальным количеством символов - B, " + taskC.get());
+        System.out.println("Строка с максимальным количеством символов - С, " + taskC.get());
     }
 }
